@@ -8,7 +8,7 @@ routes = web.RouteTableDef()
 
 async def sendMessage(textData):
     data = {'chat_id': Tg_setting['groupId'], 'text': textData}
-    timeout = aiohttp.ClientTimeout(total=1)
+    timeout = aiohttp.ClientTimeout(total=10)
     async with aiohttp.ClientSession(timeout=timeout) as session:
         async with session.post('https://api.telegram.org/bot' + Tg_setting['token'] + '/sendMessage', data=data):
             pass
